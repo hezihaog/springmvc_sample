@@ -9,6 +9,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +62,7 @@ public class UploadController {
      * @param upload 多文件，变量名要和前端文件上传表单元素的name属性一致才行
      */
     @RequestMapping(value = "/testUpload2", method = RequestMethod.POST)
-    public String testUpload2(HttpServletRequest request, MultipartFile upload) throws Exception {
+    public String testUpload2(HttpServletRequest request, @RequestParam("upload") MultipartFile upload) throws Exception {
         System.out.println("SpringMVC方式文件上传...");
         //获取文件上传路径，并创建目录
         String path = request.getSession().getServletContext().getRealPath("/uploads/");
@@ -85,7 +86,7 @@ public class UploadController {
      * @param upload 多文件，变量名要和前端文件上传表单元素的name属性一致才行
      */
     @RequestMapping(value = "/testUpload3", method = RequestMethod.POST)
-    public String testUpload3(MultipartFile upload) throws Exception {
+    public String testUpload3(@RequestParam("upload") MultipartFile upload) throws Exception {
         System.out.println("跨服务器方式文件上传...");
         //文件服务器上传文件请求路径
         String uploadPath = "http://localhost:9090/file_upload/uploads/";
