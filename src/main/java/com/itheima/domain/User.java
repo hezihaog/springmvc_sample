@@ -2,6 +2,9 @@ package com.itheima.domain;
 
 import java.util.Date;
 
+/**
+ * 用户实体
+ */
 public class User {
     private String uname;
     private Integer age;

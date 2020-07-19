@@ -1,5 +1,8 @@
 package com.itheima.exception;
 
+/**
+ * 系统异常
+ */
 public class SysException extends Exception {
     private String message;
 
